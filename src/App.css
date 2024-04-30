@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2f3640;
+  flex-wrap: wrap;
+}
+
+.container .box{
+  width: 500px;
+  min-height: 270px;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 10px 20px;
+}
+
+.container .material-symbols-outlined{
+  opacity: .7;
+  border: 1px solid grey;
+  border-radius: 50%;
+  padding: 2px;
+  margin-top: 5px;
+}
+
+
+.container .main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .totalAmount{
+  padding: 10px;
+  margin: 20px -10px;
+}
+
+.container .totalAmount .inputTotal{
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+}
+
+
+.container .totalAmount .inputTotal:hover{
+  border: 1px solid grey;
+}
+
+.container .btn{
+  display: flex;
+  justify-content: end;
+}
