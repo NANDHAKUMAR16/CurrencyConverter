@@ -24,14 +24,21 @@ function App() {
     settingUniCode();
   }, []);
 
-  const handleSwap = () => {
+  const handleSwap = async () => {
     const temp = from;
-    setFrom(to);
-    setTo(temp);
+    await setFrom(to);
+    await setTo(temp);
   }
+
+  useEffect(() => {
+    calculateAmount();
+  }, [from, to]);
 
   const calculateAmount = async () => {
     try {
+      if (!amount || !from || !to || from === to) {
+        return;
+      }
       const response = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`);
       if (!response.ok) {
         throw new Error('Failed to fetch data');
@@ -70,7 +77,7 @@ function App() {
           </div>
         </div>
         <div className="totalAmount">
-          <input type="text" className='inputTotal' onKeyUp={(e) => e.key == "Enter" ? calculateAmount() : ""} onChange={(e) => setAmount(e.target.value)} value={amount} />
+          <input type="text" className='inputTotal' onKeyUp={(e) => e.key === "Enter" ? calculateAmount() : ""} onChange={(e) => setAmount(e.target.value)} value={amount} />
         </div>
         <div className="btn">
           <Button variant="contained" style={{ backgroundColor: "royalblue", color: "#fff" }} onClick={calculateAmount}>Convert</Button>
